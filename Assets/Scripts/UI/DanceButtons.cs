@@ -25,12 +25,17 @@ public class DanceButtons : MonoBehaviour
 
     void Start()
     {
-        
+        NewDirection();
     }
 
-    void Update()
+    public bool CheckDirection(DanceDirection direction)
     {
-        
+        if(direction == _currentDirection)
+        {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void NewDirection()

@@ -9,7 +9,15 @@ public class SpotlightScript : MonoBehaviour
     private float startTime;
     public float speed = 1;
 
+    [SerializeField]
+    private float timer = 0;
+
     private float journeyLength;
+
+    public bool moving = false;
+    float fractionOfJourney;
+    float distCovered;
+    bool fired =false;
 
     void Start()
     {
@@ -17,24 +25,65 @@ public class SpotlightScript : MonoBehaviour
 
         startPoint = WaypointManager.Instance.GetFirstWaypoint();
         endPoint = WaypointManager.Instance.GetNextWaypoint(startPoint);
+        
+        timer = startPoint.stopTime;
 
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(startPoint.transform.position, endPoint.transform.position);
+        TurnOn();
     }
 
     void Update()
     {
-        float distCovered = (Time.time - startTime) * speed;
-
-        float fractionOfJourney = distCovered / journeyLength;
-
-        transform.position = Vector3.Lerp(startPoint.transform.position, endPoint.transform.position, fractionOfJourney);
-        if(fractionOfJourney >= 1)
+        if(Input.GetButtonDown("Fire2"))
         {
-            startPoint = endPoint;
-            endPoint = WaypointManager.Instance.GetNextWaypoint(startPoint);
-            startTime = Time.time;
-            journeyLength = Vector3.Distance(startPoint.transform.position, endPoint.transform.position);
+            if(!moving){
+                TurnOn();
+            }else{
+                TurnOff();
+            }
         }
+        if(moving)
+        {
+            if(timer <= 0)
+            {
+                if(!fired)
+                {
+                    TurnOn();
+                    fired = true;
+                }
+                distCovered = (Time.time - startTime) * speed;
+                fractionOfJourney = distCovered / journeyLength;
+                transform.position = Vector3.Lerp(startPoint.transform.position, endPoint.transform.position, fractionOfJourney);
+                if(fractionOfJourney >= 1)
+                {
+                    NewWaypoint();
+                    fired = false;
+                }
+            }else{
+                timer -= Time.deltaTime;
+            }
+        }
+
+
+    }
+
+    void NewWaypoint()
+    {
+        startPoint = endPoint;
+        endPoint = WaypointManager.Instance.GetNextWaypoint(startPoint);
+        startTime = Time.time;
+        journeyLength = Vector3.Distance(startPoint.transform.position, endPoint.transform.position);
+        timer = startPoint.stopTime;
+    }
+
+    void TurnOn()
+    {
+        moving = true;
+        startTime = Time.time;
+        journeyLength = Vector3.Distance(startPoint.transform.position, endPoint.transform.position);
+    }
+
+    void TurnOff()
+    {
+        moving = false;
     }
 }
