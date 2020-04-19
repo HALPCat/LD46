@@ -24,12 +24,14 @@ public class UIManager : MonoBehaviour
     Canvas canvas;
     public Animator[] animators;
 
-    TMP_Text scoreValueText;
+    public TMP_Text scoreValueText;
 
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();
         animators = canvas.GetComponentsInChildren<Animator>();
+        scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
+        
     }
     
     public void Pulse()
@@ -39,5 +41,10 @@ public class UIManager : MonoBehaviour
             a.SetTrigger("Pulse");
         }
         DanceButtons.Instance.NewDirection();
+    }
+
+    public void UpdateScoreUI()
+    {
+        scoreValueText.text = ""+GameManager.Instance.Score;
     }
 }

@@ -33,14 +33,6 @@ public class SpotlightScript : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire2"))
-        {
-            if(!moving){
-                TurnOn();
-            }else{
-                TurnOff();
-            }
-        }
         if(moving)
         {
             if(timer <= 0)

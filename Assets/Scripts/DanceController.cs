@@ -7,20 +7,21 @@ public class DanceController : MonoBehaviour
     DanceButtons.DanceDirection _pressedDirection;
     private bool _dancePressed;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         _dancePressed = false;
         UpdatePressedDirection();
 
-        if(_dancePressed && DanceButtons.Instance.CheckDirection(_pressedDirection))
+        if(_dancePressed)
         {
-            DanceButtons.Instance.NewDirection();
-            UIManager.Instance.Pulse();
+            if(DanceButtons.Instance.CheckDirection(_pressedDirection))
+            {
+                DanceButtons.Instance.NewDirection();
+                UIManager.Instance.Pulse();
+                GameManager.Instance.AddScore(2);
+            }else{
+                GameManager.Instance.AddScore(-2);
+            }
         }
     }
 

@@ -20,5 +20,15 @@ public class GameManager : MonoBehaviour
     }
     #endregion 
 
-    public int score = 0;
+    private int _score = 0;
+
+    public int Score{
+        get{ return _score; }
+    }
+
+    public void AddScore(int increment)
+    {
+        _score += increment;
+        UIManager.Instance.UpdateScoreUI();
+    }
 }
