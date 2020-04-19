@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
         }else{
             cc.Move(lastInputVector * speed * Time.deltaTime);
         }
+        
+        Quaternion target = Quaternion.LookRotation(lastInputVector, Vector3.up);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, 5f * Time.deltaTime);
     }
 
     void UpdateInputVector()
@@ -51,11 +55,11 @@ public class PlayerController : MonoBehaviour
     void UpdateMovementVector()
     {
         if(inputVector.magnitude != 0){
-            Debug.Log("Calling");
+            //Debug.Log("Calling");
             if(speed < maxSpeed){
                 speed += Time.deltaTime * accelerationSpeed;
-                Debug.Log(speed);
-                Debug.Log(accelerationSpeed);
+                //Debug.Log(speed);
+                //Debug.Log(accelerationSpeed);
             }else{
                 speed = maxSpeed;
             }
