@@ -24,7 +24,7 @@ public class SpotlightScript : MonoBehaviour
         transform.position = WaypointManager.Instance.GetFirstWaypoint().transform.position;
 
         startPoint = WaypointManager.Instance.GetFirstWaypoint();
-        endPoint = WaypointManager.Instance.GetNextWaypoint(startPoint);
+        endPoint = startPoint.nextPoint;
         
         timer = startPoint.stopTime;
 
@@ -52,6 +52,12 @@ public class SpotlightScript : MonoBehaviour
                 }
             }else{
                 timer -= Time.deltaTime;
+                if(timer > 302400 && GameManager.Instance.firstDancePressed)
+                {
+                    WaypointManager.Instance.waypoints[0].RestoreStopTime();
+                    timer = WaypointManager.Instance.waypoints[0].stopTime;
+                    MusicManager.Instance.PlayMusic(MusicManager.Instance.musicTracks[1]);
+                }
             }
         }
 
@@ -61,10 +67,15 @@ public class SpotlightScript : MonoBehaviour
     void NewWaypoint()
     {
         startPoint = endPoint;
-        endPoint = WaypointManager.Instance.GetNextWaypoint(startPoint);
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(startPoint.transform.position, endPoint.transform.position);
-        timer = startPoint.stopTime;
+        if(!endPoint.lastWayPoint){
+            endPoint = startPoint.nextPoint;
+            startTime = Time.time;
+            journeyLength = Vector3.Distance(startPoint.transform.position, endPoint.transform.position);
+            timer = startPoint.stopTime;
+        }else{
+            TurnOff();
+            Debug.Log("End");
+        }
     }
 
     void TurnOn()

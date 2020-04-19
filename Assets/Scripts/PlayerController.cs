@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 1;
+    public float maxSpeed = 1;
+    public float accelerationSpeed = 1;
+    public float deAccelerationSpeed = 1;
+    [SerializeField]
+    private float speed = 0;
+
+    [SerializeField]
     Vector3 inputVector;
+    [SerializeField]
+    Vector3 movementVector;
+    [SerializeField]
+    Vector3 lastInputVector;
+
     CharacterController cc;
 
     void Start()
@@ -18,12 +29,43 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(inputVector != Vector3.zero)
+        {
+            lastInputVector = inputVector.normalized;
+        }
         UpdateInputVector();
-        cc.Move(inputVector.normalized * speed * Time.deltaTime);
+        UpdateMovementVector();
+        if(inputVector != Vector3.zero)
+        {
+            cc.Move(movementVector * Time.deltaTime);
+        }else{
+            cc.Move(lastInputVector * speed * Time.deltaTime);
+        }
     }
 
     void UpdateInputVector()
     {
         inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+    }
+
+    void UpdateMovementVector()
+    {
+        if(inputVector.magnitude != 0){
+            Debug.Log("Calling");
+            if(speed < maxSpeed){
+                speed += Time.deltaTime * accelerationSpeed;
+                Debug.Log(speed);
+                Debug.Log(accelerationSpeed);
+            }else{
+                speed = maxSpeed;
+            }
+        }else{
+            if(speed > 0){
+                speed -= deAccelerationSpeed * Time.deltaTime;
+            }else{
+                speed = 0;
+            }
+        }
+        movementVector = inputVector.normalized * speed;
     }
 }

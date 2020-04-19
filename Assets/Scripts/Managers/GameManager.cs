@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion 
 
+    public bool firstDancePressed = false;
+
     private int _score = 0;
 
     public int Score{
@@ -30,5 +33,12 @@ public class GameManager : MonoBehaviour
     {
         _score += increment;
         UIManager.Instance.UpdateScoreUI();
+    }
+
+    public void ChangeScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+        MusicManager.Instance.StopMusic();
+        firstDancePressed = false;
     }
 }

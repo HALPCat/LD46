@@ -6,6 +6,7 @@ public class DanceController : MonoBehaviour
 {
     DanceButtons.DanceDirection _pressedDirection;
     private bool _dancePressed;
+    public bool isInSpotlight = false;
 
     void Update()
     {
@@ -14,13 +15,31 @@ public class DanceController : MonoBehaviour
 
         if(_dancePressed)
         {
-            if(DanceButtons.Instance.CheckDirection(_pressedDirection))
+            if(isInSpotlight)
             {
-                DanceButtons.Instance.NewDirection();
-                UIManager.Instance.Pulse();
-                GameManager.Instance.AddScore(2);
+                if(!GameManager.Instance.firstDancePressed){
+                    GameManager.Instance.firstDancePressed = true;
+                }
+
+                if(DanceButtons.Instance.CheckDirection(_pressedDirection))
+                {
+                    DanceButtons.Instance.NewDirection();
+                    UIManager.Instance.Pulse(true);
+                    GameManager.Instance.AddScore(2);
+                }else{
+                    DanceButtons.Instance.NewDirection();
+                    UIManager.Instance.Pulse(false);
+                    GameManager.Instance.AddScore(-2);
+                }
             }else{
-                GameManager.Instance.AddScore(-2);
+                if(DanceButtons.Instance.CheckDirection(_pressedDirection))
+                {
+                    DanceButtons.Instance.NewDirection();
+                    UIManager.Instance.Pulse(true);
+                }else{
+                    DanceButtons.Instance.NewDirection();
+                    UIManager.Instance.Pulse(false);
+                }
             }
         }
     }
@@ -43,6 +62,22 @@ public class DanceController : MonoBehaviour
         {
             _pressedDirection = DanceButtons.DanceDirection.Up;
             _dancePressed = true;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Spotlight"))
+        {
+            isInSpotlight = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Spotlight"))
+        {
+            isInSpotlight = false;
         }
     }
 }

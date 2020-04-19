@@ -16,7 +16,6 @@ public class WaypointManager : MonoBehaviour
         } else {
             _instance = this;
         }
-        DontDestroyOnLoad(gameObject);
     }
     #endregion 
 
@@ -29,9 +28,10 @@ public class WaypointManager : MonoBehaviour
 
     public Waypoint GetNextWaypoint(Waypoint waypoint)
     {
-        Waypoint nextWayPoint = null;
-        bool finished = false;
-
+        //Waypoint nextWayPoint = null;
+        //bool finished = false;
+        return waypoint.nextPoint;
+        /*
         for(int i = 0; i < waypoints.Length; i++)
         {
             if(waypoints[i] == waypoint && !finished)
@@ -56,5 +56,6 @@ public class WaypointManager : MonoBehaviour
         }
 
         return nextWayPoint;
+        */
     }
 }

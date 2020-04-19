@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -30,21 +31,42 @@ public class UIManager : MonoBehaviour
     {
         canvas = FindObjectOfType<Canvas>();
         animators = canvas.GetComponentsInChildren<Animator>();
-        scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
-        
+        SceneManager.activeSceneChanged += GetGameSceneComponents;
     }
     
-    public void Pulse()
+    private void GetGameSceneComponents(Scene current, Scene next)
+    {
+        scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
+        canvas = FindObjectOfType<Canvas>();
+        animators = canvas.GetComponentsInChildren<Animator>();
+    }
+
+    private void GetGameSceneComponents()
+    {
+        scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
+        canvas = FindObjectOfType<Canvas>();
+        animators = canvas.GetComponentsInChildren<Animator>();
+    }
+
+    public void Pulse(bool success)
     {
         foreach(Animator a in animators)
         {
-            a.SetTrigger("Pulse");
+            if(success){
+                a.SetTrigger("Pulse");
+            }else{
+                a.SetTrigger("FailPulse");
+            }
         }
         DanceButtons.Instance.NewDirection();
     }
 
     public void UpdateScoreUI()
     {
+        if(scoreValueText == null)
+        {
+            GetGameSceneComponents();
+        }
         scoreValueText.text = ""+GameManager.Instance.Score;
     }
 }

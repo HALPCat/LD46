@@ -22,6 +22,7 @@ public class MusicManager : MonoBehaviour
 
     bool playing = false;
     AudioSource audioSource;
+    public float volume;
 
     public MusicTrack[] musicTracks;
 
@@ -29,6 +30,9 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        volume = 0.25f;
+        audioSource.volume = volume;
+        PlayMusic(musicTracks[0]);
     }
 
     // Update is called once per frame
@@ -41,12 +45,28 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    void PlaySong(MusicTrack musicTrack)
+    public void PlayMusic(MusicTrack musicTrack)
     {
+        if(musicTrack == musicTracks[0])
+        {
+            audioSource.loop = true;
+        }else{
+            audioSource.loop = false;
+        }
         float beatLength = 60f/musicTrack.bpm;
         Debug.Log(beatLength);
         //InvokeRepeating("Pulse", 0f, beatLength);
         audioSource.clip = musicTrack.song;
         audioSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        audioSource.Pause();
+    }
+
+    public void AdjustVolume(float newVolume)
+    {
+        audioSource.volume = newVolume;
     }
 }
