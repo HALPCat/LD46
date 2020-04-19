@@ -77,4 +77,9 @@ public class GameManager : MonoBehaviour
         MusicManager.Instance.StopMusic();
         firstDancePressed = false;
     }
+
+    public void EndGameScreen()
+    {
+
+    }
 }

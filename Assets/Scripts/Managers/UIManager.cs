@@ -28,28 +28,34 @@ public class UIManager : MonoBehaviour
     public TMP_Text scoreValueText;
     public TMP_Text comboText;
     public TMP_Text comboValueText;
+    public GameObject endScreenHolder;
 
     void Start()
     {
-        SceneManager.activeSceneChanged += GetGameSceneComponents;
+        SceneManager.activeSceneChanged += PrepareNewScene;
         UpdateComboUI();
     }
     
-    private void GetGameSceneComponents(Scene current, Scene next)
+    public void PrepareNewScene(Scene current, Scene next)
     {
-        scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
-        comboText = GameObject.Find("ComboText").GetComponent<TMP_Text>();
-        comboValueText = GameObject.Find("ComboValueText").GetComponent<TMP_Text>();
-        canvas = FindObjectOfType<Canvas>();
-        animators = canvas.GetComponentsInChildren<Animator>();
-
+        GetGameSceneComponents();
+        ShowEndScreen(false);
     }
 
-    private void GetGameSceneComponents()
+    public void GetGameSceneComponents()
     {
-        scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
-        comboText = GameObject.Find("ComboText").GetComponent<TMP_Text>();
-        comboValueText = GameObject.Find("ComboValueText").GetComponent<TMP_Text>();
+        if(GameObject.Find("ScoreValueText") != null)
+            scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
+
+        if(GameObject.Find("ComboText") != null)
+            comboText = GameObject.Find("ComboText").GetComponent<TMP_Text>();
+
+        if(GameObject.Find("ComboValueText") != null)
+            comboValueText = GameObject.Find("ComboValueText").GetComponent<TMP_Text>();
+
+        if(GameObject.Find("EndScreenHolder") != null)
+            endScreenHolder = GameObject.Find("EndScreenHolder");
+        
         canvas = FindObjectOfType<Canvas>();
         animators = canvas.GetComponentsInChildren<Animator>();
     }
@@ -87,6 +93,11 @@ public class UIManager : MonoBehaviour
         if(comboValueText == null)
         {
             GetGameSceneComponents();
+            if(comboValueText == null)
+            {
+                Debug.Log("There is no combo UI");
+                return;
+            }
         }
         if(GameManager.Instance.ComboModifier <= 1)
         {
@@ -97,5 +108,15 @@ public class UIManager : MonoBehaviour
             comboValueText.gameObject.SetActive(true);
             comboValueText.text = GameManager.Instance.ComboModifier + "x";
         }
+    }
+
+    public void ShowEndScreen(bool show)
+    {
+        if(endScreenHolder == null)
+        {
+            Debug.Log("There is no end screen");
+            return;
+        }
+        endScreenHolder.SetActive(show);
     }
 }
