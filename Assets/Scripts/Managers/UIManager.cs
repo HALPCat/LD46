@@ -26,24 +26,30 @@ public class UIManager : MonoBehaviour
     public Animator[] animators;
 
     public TMP_Text scoreValueText;
+    public TMP_Text comboText;
+    public TMP_Text comboValueText;
 
     void Start()
     {
-        canvas = FindObjectOfType<Canvas>();
-        animators = canvas.GetComponentsInChildren<Animator>();
         SceneManager.activeSceneChanged += GetGameSceneComponents;
+        UpdateComboUI();
     }
     
     private void GetGameSceneComponents(Scene current, Scene next)
     {
         scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
+        comboText = GameObject.Find("ComboText").GetComponent<TMP_Text>();
+        comboValueText = GameObject.Find("ComboValueText").GetComponent<TMP_Text>();
         canvas = FindObjectOfType<Canvas>();
         animators = canvas.GetComponentsInChildren<Animator>();
+
     }
 
     private void GetGameSceneComponents()
     {
         scoreValueText = GameObject.Find("ScoreValueText").GetComponent<TMP_Text>();
+        comboText = GameObject.Find("ComboText").GetComponent<TMP_Text>();
+        comboValueText = GameObject.Find("ComboValueText").GetComponent<TMP_Text>();
         canvas = FindObjectOfType<Canvas>();
         animators = canvas.GetComponentsInChildren<Animator>();
     }
@@ -67,6 +73,29 @@ public class UIManager : MonoBehaviour
         {
             GetGameSceneComponents();
         }
-        scoreValueText.text = ""+GameManager.Instance.Score;
+        string incrementText;
+        if(GameManager.Instance.lastScoreIncrease > 0){
+            incrementText = " +" + GameManager.Instance.lastScoreIncrease;
+        }else{
+            incrementText = " " + GameManager.Instance.lastScoreIncrease;
+        }
+        scoreValueText.text = ""+GameManager.Instance.Score + incrementText;
+    }
+
+    public void UpdateComboUI()
+    {
+        if(comboValueText == null)
+        {
+            GetGameSceneComponents();
+        }
+        if(GameManager.Instance.ComboModifier <= 1)
+        {
+            comboText.gameObject.SetActive(false);
+            comboValueText.gameObject.SetActive(false);
+        }else{
+            comboText.gameObject.SetActive(true);
+            comboValueText.gameObject.SetActive(true);
+            comboValueText.text = GameManager.Instance.ComboModifier + "x";
+        }
     }
 }

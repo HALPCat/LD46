@@ -23,13 +23,9 @@ public class DanceController : MonoBehaviour
 
                 if(DanceButtons.Instance.CheckDirection(_pressedDirection))
                 {
-                    DanceButtons.Instance.NewDirection();
-                    UIManager.Instance.Pulse(true);
-                    GameManager.Instance.AddScore(2);
+                    DanceSuccess(true);
                 }else{
-                    DanceButtons.Instance.NewDirection();
-                    UIManager.Instance.Pulse(false);
-                    GameManager.Instance.AddScore(-2);
+                    DanceSuccess(false);
                 }
             }else{
                 if(DanceButtons.Instance.CheckDirection(_pressedDirection))
@@ -41,6 +37,22 @@ public class DanceController : MonoBehaviour
                     UIManager.Instance.Pulse(false);
                 }
             }
+        }
+    }
+
+    private void DanceSuccess(bool success)
+    {
+        if(success)
+        {
+            DanceButtons.Instance.NewDirection();
+            UIManager.Instance.Pulse(true);
+            GameManager.Instance.AddScore(2 * GameManager.Instance.ComboModifier);
+            GameManager.Instance.IncreaseComboModifier(1);
+        }else{
+            DanceButtons.Instance.NewDirection();
+            UIManager.Instance.Pulse(false);
+            GameManager.Instance.AddScore(-2);
+            GameManager.Instance.ResetComboModifier();
         }
     }
 
