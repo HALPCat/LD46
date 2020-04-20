@@ -6,17 +6,21 @@ public class PartygoerScript : MonoBehaviour
 {
     private int _partymood = 0;
     private int maxPartyMood = 3;
+    bool converted = false;
 
     public int Partymood{
         get { return _partymood; }
     }
 
     public void IncreasePartyMood(int increment){
-        if(_partymood == maxPartyMood)
-        {
-            ConvertPartygoer();
-        }else{
-            _partymood += increment;
+        if(!converted){
+            if(_partymood < maxPartyMood-1)
+            {
+                _partymood += increment;
+            }else{
+                ConvertPartygoer();
+                converted = true;
+            }
         }
     }
 
