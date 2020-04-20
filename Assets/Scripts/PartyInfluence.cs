@@ -31,7 +31,7 @@ public class PartyInfluence : MonoBehaviour
     {
         foreach(PartygoerScript ps in partygoers)
         {
-            ps.IncreasePartyMood(1);
+            ps.IncreasePartyMood(transform.position, 1);
         }
     }
 }
