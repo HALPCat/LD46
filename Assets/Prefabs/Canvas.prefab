@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 5843171267139818637}
   - component: {fileID: 5843171267139818636}
   - component: {fileID: 5843171267139818739}
+  - component: {fileID: 6002575310189868600}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -314,7 +315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -9.1, y: -10.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5843171267139818637
@@ -407,6 +408,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6002575310189868600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843171267139818737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266e3a90f25bc40419447eb5408928b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theText: {fileID: 5843171267993638219}
 --- !u!1 &5843171267285511908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1135,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 513
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1593,7 +1607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '> I no longer wish to dance'
+  m_text: I no longer wish to dance
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
   m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
@@ -1663,10 +1677,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5843171268196209613}
-    characterCount: 27
+    characterCount: 25
     spriteCount: 0
-    spaceCount: 6
-    wordCount: 7
+    spaceCount: 5
+    wordCount: 6
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -1698,6 +1712,7 @@ GameObject:
   - component: {fileID: 5843171268201834038}
   - component: {fileID: 5843171268201834037}
   - component: {fileID: 5843171268201834036}
+  - component: {fileID: 6559791149680950485}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1746,7 +1761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.9433962, g: 0.8160997, b: 0.19134924, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1815,6 +1830,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6559791149680950485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843171268201834042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266e3a90f25bc40419447eb5408928b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theText: {fileID: 5843171268196209613}
 --- !u!1 &5843171268258903669
 GameObject:
   m_ObjectHideFlags: 0
