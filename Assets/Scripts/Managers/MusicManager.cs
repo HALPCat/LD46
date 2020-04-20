@@ -21,24 +21,31 @@ public class MusicManager : MonoBehaviour
     #endregion 
 
     bool playing = false;
-    AudioSource audioSource;
-    public float volume;
+    [SerializeField]
+    AudioSource musicPlayerAS;
+    [SerializeField]
+    AudioSource soundPlayerAS;
+    public float musicVolume;
+    public float soundVolume;
 
+    public AudioClip[] soundAudioClips;
     public MusicTrack[] musicTracks;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        volume = 0.25f;
-        audioSource.volume = volume;
+        soundPlayerAS = transform.GetChild(0).GetComponent<AudioSource>();
+        musicPlayerAS = GetComponent<AudioSource>();
+        musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.25f);
+        soundVolume = PlayerPrefs.GetFloat("soundVolume", 0.25f);
+        musicPlayerAS.volume = musicVolume;
         PlayMusic(musicTracks[0]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        playing = audioSource.isPlaying;
+        playing = musicPlayerAS.isPlaying;
         if(playing)
         {
             //Debug.Log(audioSource.time);
@@ -49,24 +56,36 @@ public class MusicManager : MonoBehaviour
     {
         if(musicTrack == musicTracks[0])
         {
-            audioSource.loop = true;
+            musicPlayerAS.loop = true;
         }else{
-            audioSource.loop = false;
+            musicPlayerAS.loop = false;
         }
         float beatLength = 60f/musicTrack.bpm;
         Debug.Log(beatLength);
         //InvokeRepeating("Pulse", 0f, beatLength);
-        audioSource.clip = musicTrack.song;
-        audioSource.Play();
+        musicPlayerAS.clip = musicTrack.song;
+        musicPlayerAS.Play();
     }
 
     public void StopMusic()
     {
-        audioSource.Pause();
+        musicPlayerAS.Pause();
     }
 
-    public void AdjustVolume(float newVolume)
+    public void PlaySound(AudioClip clip)
     {
-        audioSource.volume = newVolume;
+        soundPlayerAS.PlayOneShot(clip);
+    }
+
+    public void AdjustMusicVolume(float newVolume)
+    {
+        musicPlayerAS.volume = newVolume;
+        PlayerPrefs.SetFloat("musicVolume", newVolume);
+    }
+
+    public void AdjustSoundVolume(float newVolume)
+    {
+        soundPlayerAS.volume = newVolume;
+        PlayerPrefs.SetFloat("soundVolume", newVolume);
     }
 }

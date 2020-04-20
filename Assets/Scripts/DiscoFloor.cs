@@ -29,7 +29,19 @@ public class DiscoFloor : MonoBehaviour
     {
         foreach(Material m in discoMaterials)
         {
-            m.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            int[] r = {Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2)};
+
+            if(r[0]+r[1]+r[2] == 0)
+            {
+                int rNew = Random.Range(0, 3);
+                r[rNew] = 1;
+            }
+            else if(r[0]+r[1]+r[2] == 3)
+            {
+                int rNew = Random.Range(0, 3);
+                r[rNew] = 0;
+            }
+            m.color = new Color(r[0], r[1], r[2]);
         }
     }
 }

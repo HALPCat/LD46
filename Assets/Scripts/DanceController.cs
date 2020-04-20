@@ -7,6 +7,12 @@ public class DanceController : MonoBehaviour
     DanceButtons.DanceDirection _pressedDirection;
     private bool _dancePressed;
     public bool isInSpotlight = false;
+    Animator animator;
+
+    void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     void Update()
     {
@@ -46,11 +52,13 @@ public class DanceController : MonoBehaviour
         {
             DanceButtons.Instance.NewDirection();
             UIManager.Instance.Pulse(true);
+            MusicManager.Instance.PlaySound(MusicManager.Instance.soundAudioClips[0]);
             GameManager.Instance.AddScore(2 * GameManager.Instance.ComboModifier);
             GameManager.Instance.IncreaseComboModifier(1);
         }else{
             DanceButtons.Instance.NewDirection();
             UIManager.Instance.Pulse(false);
+            MusicManager.Instance.PlaySound(MusicManager.Instance.soundAudioClips[1]);
             GameManager.Instance.AddScore(-2);
             GameManager.Instance.ResetComboModifier();
         }
@@ -61,18 +69,22 @@ public class DanceController : MonoBehaviour
         if(Input.GetButtonDown("DownDance"))
         {
             _pressedDirection = DanceButtons.DanceDirection.Down;
+            animator.SetTrigger("Dance1");
             _dancePressed = true;
         }else if(Input.GetButtonDown("LeftDance"))
         {
             _pressedDirection = DanceButtons.DanceDirection.Left;
+            animator.SetTrigger("Dance2");
             _dancePressed = true;
         }else if(Input.GetButtonDown("RightDance"))
         {
             _pressedDirection = DanceButtons.DanceDirection.Right;
+            animator.SetTrigger("Dance3");
             _dancePressed = true;
         }else if(Input.GetButtonDown("UpDance"))
         {
             _pressedDirection = DanceButtons.DanceDirection.Up;
+            animator.SetTrigger("Dance4");
             _dancePressed = true;
         }
     }

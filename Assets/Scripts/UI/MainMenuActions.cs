@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class MainMenuActions : MonoBehaviour
 {
-    public Slider volumeSlider;
+    public Slider musicVolumeSlider;
+    public Slider soundVolumeSlider;
     public bool optionsEnabled = false;
     public GameObject optionsHolder;
 
     void Start()
     {
-        volumeSlider.onValueChanged.AddListener(delegate {MusicManager.Instance.AdjustVolume(volumeSlider.value); });
+        musicVolumeSlider.onValueChanged.AddListener(delegate {MusicManager.Instance.AdjustMusicVolume(musicVolumeSlider.value); });
+        soundVolumeSlider.onValueChanged.AddListener(delegate {MusicManager.Instance.AdjustSoundVolume(soundVolumeSlider.value); });
     }
 
     public void StartGame()
@@ -26,6 +28,8 @@ public class MainMenuActions : MonoBehaviour
         if(optionsEnabled)
         {
             optionsHolder.SetActive(true);
+            musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.25f);
+            soundVolumeSlider.value = PlayerPrefs.GetFloat("soundVolume", 0.25f);
         }else{
             optionsHolder.SetActive(false);
         }
