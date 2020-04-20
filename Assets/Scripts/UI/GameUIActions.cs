@@ -6,6 +6,7 @@ public class GameUIActions : MonoBehaviour
 {
     public void BackToMainMenu()
     {
+        GameManager.Instance.PauseGame(false);
         GameManager.Instance.ChangeScene(0);
     }
 

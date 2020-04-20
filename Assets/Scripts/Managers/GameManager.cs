@@ -81,13 +81,27 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(int sceneIndex)
     {
+        UpdateHiScore(SceneManager.GetActiveScene().buildIndex, _score);
         SceneManager.LoadScene(sceneIndex);
         MusicManager.Instance.StopMusic();
         firstDancePressed = false;
         gameOver = false;
+        _score = 0;
         if(sceneIndex == 0)
         {
             MusicManager.Instance.PlayMusic(MusicManager.Instance.musicTracks[0]);
+        }
+    }
+
+    void UpdateHiScore(int stage, int newScore)
+    {
+        Debug.Log("Updating hiScore on stage " + stage + " with score " + newScore);
+        if(PlayerPrefs.GetInt("stage" + stage +"Score") < newScore)
+        {
+            Debug.Log("new score is higher");
+            PlayerPrefs.SetInt("stage" + stage +"Score", newScore);
+        }else{
+            Debug.Log("new score is not higher");
         }
     }
 

@@ -63,13 +63,13 @@ public class SpotlightScript : MonoBehaviour
 
         if(GameManager.Instance.firstDancePressed)
         {
-            Debug.Log("first dance pressed");
+            //Debug.Log("first dance pressed");
             if(!moving)
             {
-                Debug.Log("not moving");
-                Debug.Log("timer: " + timer);
+                //Debug.Log("not moving");
+                //Debug.Log("timer: " + timer);
                 if(timer <= 0 && !GameManager.Instance.gameOver){
-                    Debug.Log("calling!!!");
+                    //Debug.Log("calling!!!");
                     GameManager.Instance.EndGame();
                 }else{
                     timer -= Time.deltaTime;
