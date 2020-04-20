@@ -61,16 +61,21 @@ public class SpotlightScript : MonoBehaviour
             }
         }
 
-        if(!moving)
+        if(GameManager.Instance.firstDancePressed)
         {
-            if(timer <= 0 && !GameManager.Instance.gameOver){
-                GameManager.Instance.EndGame();
-            }else{
-                timer -= Time.deltaTime;
+            Debug.Log("first dance pressed");
+            if(!moving)
+            {
+                Debug.Log("not moving");
+                Debug.Log("timer: " + timer);
+                if(timer <= 0 && !GameManager.Instance.gameOver){
+                    Debug.Log("calling!!!");
+                    GameManager.Instance.EndGame();
+                }else{
+                    timer -= Time.deltaTime;
+                }
             }
         }
-
-
     }
 
     void NewWaypoint()

@@ -8,4 +8,9 @@ public class GameUIActions : MonoBehaviour
     {
         GameManager.Instance.ChangeScene(0);
     }
+
+    public void NextStage()
+    {
+        GameManager.Instance.NextLevel();
+    }
 }
