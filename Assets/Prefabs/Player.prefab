@@ -170,6 +170,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkelemanDanceFinal
       objectReference: {fileID: 0}
+    - target: {fileID: -268284749603511726, guid: 330dd883112ae2b48a975990cb892427,
+        type: 3}
+      propertyPath: m_Materials.Array.data[9]
+      value: 
+      objectReference: {fileID: 2100000, guid: 39de6689040373a4d90ce10d03ab158a, type: 2}
     - target: {fileID: 1988524941181545093, guid: 330dd883112ae2b48a975990cb892427,
         type: 3}
       propertyPath: m_LocalRotation.x
