@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         cc = GetComponent<CharacterController>();
+        lastInputVector = (transform.position - transform.forward).normalized;
     }
 
     void Update()

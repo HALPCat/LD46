@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion 
 
+    [SerializeField]
     public bool firstDancePressed = false;
 
     private int _score = 0;
@@ -87,6 +88,16 @@ public class GameManager : MonoBehaviour
         if(sceneIndex == 0)
         {
             MusicManager.Instance.PlayMusic(MusicManager.Instance.musicTracks[0]);
+        }
+    }
+
+    public void NextLevel()
+    {
+        if(SceneManager.GetActiveScene().buildIndex != 3)
+        {
+            ChangeScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }else{
+            ChangeScene(0);
         }
     }
 

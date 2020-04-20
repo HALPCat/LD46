@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PartygoerScript : MonoBehaviour
 {
+    [SerializeField]
     private int _partymood = 0;
+    [SerializeField]
     private int maxPartyMood = 3;
+    [SerializeField]
     bool converted = false;
 
     public int Partymood{
@@ -21,6 +24,10 @@ public class PartygoerScript : MonoBehaviour
                 ConvertPartygoer();
                 converted = true;
             }
+        }
+        if(_partymood < 0)
+        {
+            _partymood = 0;
         }
     }
 
