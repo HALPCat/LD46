@@ -5,14 +5,13 @@ using UnityEngine;
 public class DiscoFloor : MonoBehaviour
 {
     Renderer[] discoRenderers;
-    [SerializeField]
-    Material[] discoMaterials = new Material[80];
+    Material[] discoMaterials = new Material[81];
 
     // Start is called before the first frame update
     void Start()
     {
         discoRenderers = GetComponentsInChildren<Renderer>();
-        for(int i = 0; i < discoRenderers.Length-1; i++)
+        for(int i = 0; i < discoRenderers.Length; i++)
         {
             discoMaterials[i] = discoRenderers[i].material;
         }
