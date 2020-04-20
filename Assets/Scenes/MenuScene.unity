@@ -274,8 +274,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -352,7 +353,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -959,8 +960,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 86fe840603ddd144da2de71638186b34, type: 2}
-  m_sharedMaterial: {fileID: -7585180672864681409, guid: 86fe840603ddd144da2de71638186b34,
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1291,8 +1292,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 86fe840603ddd144da2de71638186b34, type: 2}
-  m_sharedMaterial: {fileID: -7585180672864681409, guid: 86fe840603ddd144da2de71638186b34,
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1750,8 +1751,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start Game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 86fe840603ddd144da2de71638186b34, type: 2}
-  m_sharedMaterial: {fileID: -7585180672864681409, guid: 86fe840603ddd144da2de71638186b34,
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2301,8 +2302,9 @@ MonoBehaviour:
 
     Kevin MacLeod'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2844,8 +2846,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Music Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2922,7 +2925,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -3618,8 +3621,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 123456789
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 86fe840603ddd144da2de71638186b34, type: 2}
-  m_sharedMaterial: {fileID: -7585180672864681409, guid: 86fe840603ddd144da2de71638186b34,
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3937,8 +3940,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sound Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1f8552f1918ea64a93bcf6a0936eab3, type: 2}
+  m_sharedMaterial: {fileID: 541443676456678434, guid: c1f8552f1918ea64a93bcf6a0936eab3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4015,7 +4019,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
