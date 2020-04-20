@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text comboText;
     public TMP_Text comboValueText;
     public GameObject endScreenHolder;
+    public GameObject pauseMenuHolder;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     {
         GetGameSceneComponents();
         ShowEndScreen(false);
+        ShowPauseMenu(false);
     }
 
     public void GetGameSceneComponents()
@@ -55,6 +57,9 @@ public class UIManager : MonoBehaviour
 
         if(GameObject.Find("EndScreenHolder") != null)
             endScreenHolder = GameObject.Find("EndScreenHolder");
+
+        if(GameObject.Find("PauseMenuHolder") != null)
+            pauseMenuHolder = GameObject.Find("PauseMenuHolder");
         
         canvas = FindObjectOfType<Canvas>();
         animators = canvas.GetComponentsInChildren<Animator>();
@@ -118,5 +123,15 @@ public class UIManager : MonoBehaviour
             return;
         }
         endScreenHolder.SetActive(show);
+    }
+
+    public void ShowPauseMenu(bool show)
+    {
+        if(pauseMenuHolder == null)
+        {
+            Debug.Log("There is no pause menu");
+            return;
+        }
+        pauseMenuHolder.SetActive(show);
     }
 }

@@ -8,39 +8,44 @@ public class DanceController : MonoBehaviour
     private bool _dancePressed;
     public bool isInSpotlight = false;
     Animator animator;
+    PartyInfluence partyInfluence;
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        partyInfluence = GetComponentInChildren<PartyInfluence>();
     }
 
     void Update()
     {
-        _dancePressed = false;
-        UpdatePressedDirection();
-
-        if(_dancePressed)
+        if(!GameManager.Instance.gamePaused)
         {
-            if(isInSpotlight)
-            {
-                if(!GameManager.Instance.firstDancePressed){
-                    GameManager.Instance.firstDancePressed = true;
-                }
+            _dancePressed = false;
+            UpdatePressedDirection();
 
-                if(DanceButtons.Instance.CheckDirection(_pressedDirection))
+            if(_dancePressed && !GameManager.Instance.gameOver)
+            {
+                if(isInSpotlight)
                 {
-                    DanceSuccess(true);
+                    if(!GameManager.Instance.firstDancePressed){
+                        GameManager.Instance.firstDancePressed = true;
+                    }
+
+                    if(DanceButtons.Instance.CheckDirection(_pressedDirection))
+                    {
+                        DanceSuccess(true);
+                    }else{
+                        DanceSuccess(false);
+                    }
                 }else{
-                    DanceSuccess(false);
-                }
-            }else{
-                if(DanceButtons.Instance.CheckDirection(_pressedDirection))
-                {
-                    DanceButtons.Instance.NewDirection();
-                    UIManager.Instance.Pulse(true);
-                }else{
-                    DanceButtons.Instance.NewDirection();
-                    UIManager.Instance.Pulse(false);
+                    if(DanceButtons.Instance.CheckDirection(_pressedDirection))
+                    {
+                        DanceButtons.Instance.NewDirection();
+                        UIManager.Instance.Pulse(true);
+                    }else{
+                        DanceButtons.Instance.NewDirection();
+                        UIManager.Instance.Pulse(false);
+                    }
                 }
             }
         }
@@ -55,6 +60,9 @@ public class DanceController : MonoBehaviour
             MusicManager.Instance.PlaySound(MusicManager.Instance.soundAudioClips[0]);
             GameManager.Instance.AddScore(2 * GameManager.Instance.ComboModifier);
             GameManager.Instance.IncreaseComboModifier(1);
+            //Partygoers
+            partyInfluence.Influence();
+
         }else{
             DanceButtons.Instance.NewDirection();
             UIManager.Instance.Pulse(false);

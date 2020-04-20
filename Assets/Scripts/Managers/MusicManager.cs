@@ -68,9 +68,18 @@ public class MusicManager : MonoBehaviour
         musicPlayerAS.Play();
     }
 
+    public void PauseMusic(bool paused)
+    {
+        if(paused){
+            musicPlayerAS.Pause();
+        }else{
+            musicPlayerAS.UnPause();
+        }
+    }
+
     public void StopMusic()
     {
-        musicPlayerAS.Pause();
+        musicPlayerAS.clip = null;
     }
 
     public void PlaySound(AudioClip clip)

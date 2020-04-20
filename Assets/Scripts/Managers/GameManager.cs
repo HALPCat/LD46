@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
     public int lastScoreIncrease = 0;
 
+    public bool gameOver = false;
+    public bool gamePaused = false;
+
     public int Score{
         get{ return _score; }
     }
@@ -47,6 +50,10 @@ public class GameManager : MonoBehaviour
             {
                 IncreaseComboModifier(-1);
             }
+        }
+        if(Input.GetButtonDown("Cancel"))
+        {
+            PauseGame(!gamePaused);
         }
     }
 
@@ -76,10 +83,34 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
         MusicManager.Instance.StopMusic();
         firstDancePressed = false;
+        gameOver = false;
+        if(sceneIndex == 0)
+        {
+            MusicManager.Instance.PlayMusic(MusicManager.Instance.musicTracks[0]);
+        }
     }
 
-    public void EndGameScreen()
+    public void EndGame()
     {
+        gameOver = true;
+        UIManager.Instance.ShowEndScreen(true);
+    }
 
+    public void PauseGame(bool paused)
+    {
+        if(gameOver || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        {
+            return;
+        }
+        MusicManager.Instance.PauseMusic(paused);
+        UIManager.Instance.ShowPauseMenu(paused);
+        gamePaused = paused;
+
+        if(paused)
+        {
+            Time.timeScale = 0;
+        }else{
+            Time.timeScale = 1;
+        }
     }
 }

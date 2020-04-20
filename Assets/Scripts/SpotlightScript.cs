@@ -61,6 +61,15 @@ public class SpotlightScript : MonoBehaviour
             }
         }
 
+        if(!moving)
+        {
+            if(timer <= 0 && !GameManager.Instance.gameOver){
+                GameManager.Instance.EndGame();
+            }else{
+                timer -= Time.deltaTime;
+            }
+        }
+
 
     }
 
@@ -88,5 +97,6 @@ public class SpotlightScript : MonoBehaviour
     void TurnOff()
     {
         moving = false;
+        timer = startPoint.stopTime;
     }
 }
