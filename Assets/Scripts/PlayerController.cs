@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         cc = GetComponent<CharacterController>();
-
-        Vector3 firstWayPoint = WaypointManager.Instance.GetFirstWaypoint().transform.position;
-        transform.position = new Vector3(firstWayPoint.x, 0, firstWayPoint.z);
     }
 
     void Update()

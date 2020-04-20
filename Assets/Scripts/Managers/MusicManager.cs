@@ -36,9 +36,10 @@ public class MusicManager : MonoBehaviour
     {
         soundPlayerAS = transform.GetChild(0).GetComponent<AudioSource>();
         musicPlayerAS = GetComponent<AudioSource>();
-        musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.25f);
-        soundVolume = PlayerPrefs.GetFloat("soundVolume", 0.25f);
+        musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        soundVolume = PlayerPrefs.GetFloat("soundVolume");
         musicPlayerAS.volume = musicVolume;
+        soundPlayerAS.volume = soundVolume;
         PlayMusic(musicTracks[0]);
     }
 
