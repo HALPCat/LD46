@@ -29,6 +29,8 @@ public class PartygoerScript : MonoBehaviour
         targetQ = Quaternion.LookRotation(target - transform.position, Vector3.up); 
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetQ, 5f * Time.deltaTime);
+
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     public int Partymood{
@@ -51,6 +53,11 @@ public class PartygoerScript : MonoBehaviour
         {
             _partymood = 0;
         }
+    }
+
+    public void ResetPartyMood()
+    {
+        _partymood = 0;
     }
 
     public void ConvertPartygoer()

@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
         Quaternion target = Quaternion.LookRotation(lastInputVector, Vector3.up);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, target, 5f * Time.deltaTime);
+
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     void UpdateInputVector()
