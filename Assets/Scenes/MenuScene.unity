@@ -2329,6 +2329,7 @@ GameObject:
   - component: {fileID: 695515731}
   - component: {fileID: 695515730}
   - component: {fileID: 695515729}
+  - component: {fileID: 695515732}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -2446,6 +2447,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695515727}
   m_CullTransparentMesh: 0
+--- !u!114 &695515732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695515727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266e3a90f25bc40419447eb5408928b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theText: {fileID: 1387698075}
 --- !u!1 &720658275
 GameObject:
   m_ObjectHideFlags: 0
